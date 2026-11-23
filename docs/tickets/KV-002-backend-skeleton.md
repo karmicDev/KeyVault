@@ -23,10 +23,10 @@ Out:
 
 ## Acceptance criteria
 
-- [ ] `uvicorn` starts the app; `/health` returns 200 with DB ok.
-- [ ] `/health` returns 503 with `"db": "error"` when the database is down (test).
-- [ ] `alembic upgrade head` runs against the docker database.
-- [ ] pytest and ruff pass.
+- [x] `uvicorn` starts the app; `/health` returns 200 with DB ok.
+- [x] `/health` returns 503 with `"db": "error"` when the database is down (test).
+- [x] `alembic upgrade head` runs against the docker database.
+- [x] pytest and ruff pass.
 
 ## Check
 

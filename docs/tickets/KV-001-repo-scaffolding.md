@@ -21,9 +21,9 @@ Out:
 
 ## Acceptance criteria
 
-- [ ] `docker compose up -d db` starts PostgreSQL and the container becomes `healthy`.
-- [ ] `.env` is ignored by git; `.env.example` is committed.
-- [ ] README states clearly what is out of scope.
+- [x] `docker compose up -d db` starts PostgreSQL and the container becomes `healthy`.
+- [x] `.env` is ignored by git; `.env.example` is committed.
+- [x] README states clearly what is out of scope.
 
 ## Check
 
