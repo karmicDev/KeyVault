@@ -1,0 +1,49 @@
+# --- Secrets -------------------------------------------------------------
+# Local environment with real passwords; only the template is committed.
+.env
+.env.*
+!.env.example
+# CA private keys for development (see AGENTS.md, security notes).
+*.key
+backend/secrets/
+
+# --- macOS ---------------------------------------------------------------
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# --- Python (backend) ----------------------------------------------------
+__pycache__/
+*.py[cod]
+.venv/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# --- Flutter / Dart (app) ------------------------------------------------
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.pub-cache/
+build/
+
+# --- Xcode / iOS ---------------------------------------------------------
+xcuserdata/
+DerivedData/
+Pods/
+*.xcuserstate
+
+# --- Android / Gradle ----------------------------------------------------
+.gradle/
+local.properties
+*.jks
+*.keystore
+captures/
+
+# --- Editors -------------------------------------------------------------
+.idea/
+*.iml
+.vscode/
