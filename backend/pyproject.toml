@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "keyvault-backend"
+version = "0.1.0"
+description = "KeyVault backend: FastAPI service and mini CA"
+license = "MIT"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.32",
+    "pydantic-settings>=2.6",
+    "sqlalchemy>=2.0",
+    "alembic>=1.16",
+    "psycopg[binary]>=3.2",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.3",
+    "httpx>=0.27",  # required by FastAPI's TestClient
+    "ruff>=0.8",
+]
+
+[tool.setuptools.packages.find]
+include = ["keyvault*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+
+[tool.ruff]
+target-version = "py312"
+line-length = 88
+
+[tool.ruff.lint]
+# E/F: pycodestyle + pyflakes, I: import order, UP: modern syntax, B: likely bugs
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.ruff.lint.isort]
+# backend/alembic/ is the migrations folder, not our package: keep the alembic
+# library sorted as third-party.
+known-third-party = ["alembic"]

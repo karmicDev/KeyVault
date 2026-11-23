@@ -71,10 +71,16 @@ docker-compose.yml   # PostgreSQL (+ backend)
 > Fill in / correct as the tickets create the projects.
 
 ```bash
-# Backend
-docker compose up -d db            # start PostgreSQL
-cd backend && pytest               # backend tests
-cd backend && ruff check .         # backend lint
+# Backend (Python >= 3.12; run from backend/ with the venv active)
+docker compose up -d db            # start PostgreSQL (from the repo root)
+cd backend
+python3 -m venv .venv              # once: create the virtual environment
+source .venv/bin/activate          # every new shell
+pip install -e ".[dev]"            # once / after dependency changes
+alembic upgrade head               # apply database migrations
+python -m uvicorn keyvault.main:create_app --factory --reload   # dev server, GET /health
+pytest                             # tests (create + migrate the keyvault_test DB)
+ruff check . && ruff format --check .   # lint + format check
 
 # App
 cd app && flutter pub get
